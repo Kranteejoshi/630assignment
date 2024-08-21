@@ -15,7 +15,7 @@ const Login = () => {
         <Input placeholder='Enter Password' type='password'/>
         <Button className='bg-blue-400 text-white'>Login</Button>
 
-      <p>Don't have an account? <Link href='/register'>Register</Link> Instead</p>
+      <p>Don't have an account? <Link href='/register'>Register</Link> Instead.</p>
       <Link href='#'>Forgot Password</Link>
       </CardBody>
 
