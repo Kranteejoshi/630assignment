@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* .login{
+  background-color: rgb(111, 176, 190);
+  height: 400px;
+  width: 300px;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 6%;
+
+
+}
+
+.name{
+  background-color: aqua;
+} */
