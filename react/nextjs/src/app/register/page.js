@@ -16,7 +16,7 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
-    .min(8, "Password must be 8 characters long")
+    .min(8, "Password must be atleast 8 characters long")
     .required("Required"),
   phoneNumber: Yup.number()
     .min(10, "Phone Number must be 10 characters long")
