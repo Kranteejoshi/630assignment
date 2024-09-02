@@ -1,9 +1,13 @@
+
+import NavBar from '@/components/navbar/page'
 import React from 'react'
 
-const page = () => {
+const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <NavBar/>
+    </div>
   )
 }
 
-export default page
+export default Home

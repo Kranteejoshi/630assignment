@@ -35,13 +35,16 @@
 
 
 'use client'
-import { Button } from '@nextui-org/react'
+import { Button, Card } from '@nextui-org/react'
 import React, { useState } from 'react'
 
 const Calculator = () => {
-    const [output, setOutput] = useState('')
+  <div className='flex justify-center item-center'>
+    </div>
+   
+   const [output, setOutput] = useState('')
     const buttons = [
-        [{key: 'AC', className: 'bg-red-500'},
+        [{key: 'AC', className: 'bg-green-500'},
         {key: '%', className: 'bg-orange-300'},
         {key: '/', className: 'bg-orange-300'},
         {key: 'DEL', className: 'bg-red-500'},],
@@ -62,11 +65,20 @@ const Calculator = () => {
         {key: '.', className: 'bg-gray-300'},
         {key: '=', className: 'bg-green-500'}]
     ]
+  
+    const arthimeticKeys = ['/','*']
 
-    const handleChange = (key)=>{
+      const handleChange = (key)=>{
+        if(arthimeticKeys.includes(output.toString().slice(-1)) && arthimeticKeys.includes(key)){
+        const result =  output.slice(0,output.length-1)+ key
+        setOutput(result)
+        return;
+        }else if(output.toString().slice(-1) == key && isNaN(Number(key)) ){
+          return;
+        }
       switch(key){
         case '+', '-','*','/':
-            setOutput(output+ key)
+            setOutput(output.toString()+ key)
             break;
         case 'AC':
             setOutput('')
@@ -76,9 +88,11 @@ const Calculator = () => {
             break;
         case '=':
             setOutput(eval(output))
-            break;  
+        case '%':
+            setOutput(eval(output/100))
+            break;    
         case 'DEL':
-          setOutput(output.slice(0, -1))
+          setOutput(output.toString().slice(0, -1))
           break; 
         default:
             setOutput(output+ key)
@@ -99,5 +113,6 @@ const Calculator = () => {
     </div>
   )
 }
+
 
 export default Calculator
