@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { FaRegHandRock } from "react-icons/fa";
 import { FaRegHandPaper } from "react-icons/fa";
 import { FaRegHandScissors } from "react-icons/fa";
-
 import Confetti from 'react-confetti'
+//confetti shows celeration 
+
 import { Button } from '@nextui-org/react';
 
 const RockPaper = () => {
@@ -18,10 +19,11 @@ const RockPaper = () => {
     const choices = [
         {name:'rock', icon:  <FaRegHandRock size={100} onClick={()=> handleChange('rock')}/> },
         {name:'paper', icon:  <FaRegHandPaper size={100} onClick={()=> handleChange('paper')}/> },
-         {name:'scissor', icon:  <FaRegHandScissors size={100} onClick={()=> handleChange('scissor')}/> },
+         {name:'scissors', icon:  <FaRegHandScissors size={100} onClick={()=> handleChange('scissors')}/> },
     ]
     useEffect(()=>{
         const newNum = Math.floor(Math.random() * choices.length)
+        //roundoff garna floor use gareko 
         setRandomNum(newNum)
     },[userChoice, newRound])
     const confetti =  <Confetti
@@ -48,11 +50,11 @@ const RockPaper = () => {
         </div>
         { choices[randomNum].name ===  userChoice && "DRAW" } 
         { choices[randomNum].name === 'paper' &&  userChoice=== 'rock' && "You lost" } 
-        { choices[randomNum].name === 'scissor' &&  userChoice=== 'paper' && "You lost" } 
-        { choices[randomNum].name === 'rock' &&  userChoice=== 'scissor' && "You lost" } 
+        { choices[randomNum].name === 'scissors' &&  userChoice=== 'paper' && "You lost" } 
+        { choices[randomNum].name === 'rock' &&  userChoice=== 'scissors' && "You lost" } 
         { choices[randomNum].name === 'rock' &&  userChoice=== 'paper' && confetti } 
-        { choices[randomNum].name === 'paper' &&  userChoice=== 'scissor' && confetti } 
-        { choices[randomNum].name === 'scissor' &&  userChoice=== 'rock' && confetti } 
+        { choices[randomNum].name === 'paper' &&  userChoice=== 'scissors' && confetti } 
+        { choices[randomNum].name === 'scissors' &&  userChoice=== 'rock' && confetti } 
     </div>
   )
 }
