@@ -26,11 +26,11 @@ const Bird = () => {
       }
       //main logic useEffect ma xa.
   return (
-    <div >
+    <div className='flex gap-6 items-center' >
        {randomNum}
         {birdCages.map((item, id)=>{
             // map wala loop lagako cuz it can return something. 
-            return <div className='p-2 m-2  gap-2 h-52 shadow-md w-52'>
+            return <div className='p-2 m-8  gap-2 h-52 shadow-xl w-52'>
                   {item}
                 {id === randomNum &&  <Image src="https://upload.wikimedia.org/wikipedia/en/0/02/Tweety.svg"
                     width={100}
