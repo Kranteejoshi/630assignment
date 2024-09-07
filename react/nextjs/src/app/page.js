@@ -7,7 +7,7 @@ import React from 'react'
 const Home = () => {
   let [num, setNum] = useState(10);
   const handleChange = (operation)=>{
-  
+    alert("hi")
     if(operation=== 'inc') {
       setNum(num + 1)
     }else{
@@ -23,4 +23,8 @@ const Home = () => {
       </div>
   )
 }
+
+
+
+
 export default Home
