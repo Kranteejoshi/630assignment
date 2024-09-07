@@ -8,7 +8,7 @@ export const boxSlice = createSlice({
     backgroundColor: 'red',
     borderRadius: 0,
     padding:20,
-    margin:20,
+    margin:60,
     marginLeft: 50,
     isCircle: false
   },

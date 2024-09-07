@@ -25,7 +25,7 @@ const Box = () => {
         </div>
         <input onChange={handleChange} placeholder="Property:value"/>
         area is {area}
-        <button onClick={()=> dispatch(changeToCircle())}>+</button>
+        <button onClick={()=> dispatch(changeShape())}>+</button>
         <button onClick={()=> dispatch(increaseWidth())}>-</button>
         <Button><FaArrowLeft/></Button>
         <Button onClick={()=> dispatch(moveRight())}><FaArrowRight/></Button>
