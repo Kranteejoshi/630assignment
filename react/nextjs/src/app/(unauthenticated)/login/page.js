@@ -11,7 +11,6 @@ const Login = () => {
       src="logo.png"
       /> 
       <CardBody className='flex gap-2'>
-        <h1>aaaaaaadjhabdjhghsufguqwfbcfvaaa</h1>
         <Input placeholder='Enter Email'/>
         <Input placeholder='Enter Password' type='password'/>
         <Button className='bg-blue-400 text-white'>Login</Button>
