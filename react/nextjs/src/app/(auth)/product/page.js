@@ -4,7 +4,7 @@ import { addtoWishList } from '@/redux/reducerSlice/productSlice'
 import { Card, CardBody, CardFooter, Image } from '@nextui-org/react'
 import React from 'react'
 import { FaHeart } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -13,17 +13,27 @@ const Product = () => {
     {id: 21, productName:'Prestige cooker', price: 4000, productImage: 'https://m.media-amazon.com/images/I/71MMumUOEaL._AC_SL1500_.jpg'},
     {id: 15, productName:'Philips kettle', price: 7000, productImage: 'https://www.meroshopping.com/images/Electric_Kettle.jpg'},
     {id: 31, productName:'Soundcore headphone', price: 9000, productImage: 'https://anker.com.sg/cdn/shop/files/blue.jpg?v=1716170389&width=1200'},
-    {id: 45, productName:'Dell monitor', price: 26000, productImage: 'https://maxit.com.np/storage/product/338/pvig0P4AIyyNanYQcClShmY6zFdZ8GFQ1ty3dMnO.jpg'}
+    {id: 45, productName:'Dell monitor', price: 26000, productImage: 'https://maxit.com.np/storage/product/338/pvig0P4AIyyNanYQcClShmY6zFdZ8GFQ1ty3dMnO.jpg'},
+    {id: 37, productName:'GoPro hero 10', price: 75000, productImage: 'https://m.media-amazon.com/images/I/51mcDVUBaxL._AC_SL1200_.jpg'},
+    {id: 24, productName:'MT Helmet', price: 12000, productImage: 'https://www.helmetdiscounter.eu//Files/4/15000/15407/ProductPhotos/620/1912600452_MT_Stinger_Helmet_Brave_E2_gloss_fluor_orange.jpg'},
+    {id: 52, productName:'Apple watch Series 9', price: 68000, productImage: 'https://cdn.hukut.com/Apple%20Watch%20Series%209%20Midnight.webp'}
+
+
+
 
   ]
+  const  {name} = useSelector(state=>state.user)
   return (
     <div>
     <Sidebar/>
+    {name}
     <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
     {productList.map((item, index) => (
-      <Card shadow="sm" key={index} isPressable >
-        <CardBody className="overflow-visible p-0">
-        <FaHeart onClick={() => dispatch(addtoWishList(item))}className='absolute right-4 top-2 z-40'/>
+      <Card shadow="sm" key={index}>
+        <CardBody onPress={()=>Router.push('/product'+item.id)} className="overflow-visible p-0">
+        <FaHeart onClick={(e) =>{
+          e.stopPropagation()
+          dispatch(addtoWishList(item))}}className='absolute right-4 top-2 z-40'/>
           <Image
             shadow="sm"
             radius="lg"
