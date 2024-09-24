@@ -26,7 +26,7 @@ export default function Sidebar() {
       {name}, your wishlist item:
     {wishListItems.length>0 ? wishListItems.map((item, id) => {
       return <div className='flex'>
-        <li>{id+1}--- {item.productName}</li>
+        <li>{id+1}--- {item.title}</li>
          <FaTrash/>
         </div>
     }): "No Wishlist!"}
