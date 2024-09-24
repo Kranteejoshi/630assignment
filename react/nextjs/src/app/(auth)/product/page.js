@@ -27,7 +27,7 @@ const Product = () => {
     <div>
     <Sidebar/>
     {name}
-    <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
+    <div className="gap-4 grid grid-cols-2 sm:grid-cols-4 p-4">
     {productList.map((item, index) => (
       <Card shadow="sm" key={index}>
         <CardBody onPress={()=>Router.push('/product'+item.id)} className="overflow-visible p-0">
