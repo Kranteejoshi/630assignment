@@ -9,6 +9,10 @@ import { Image } from "@nextui-org/react"
 
 const Categories = async() => {
   const {data} = await axios.get('https://api.escuelajs.co/api/v1/categories')
+  const handleDelete =async(id)=> {
+   const {data}= await axios.delete('https://api.escuelajs.co/api/v1/categories/'+id)
+   console.log(data)
+  }
   
   return (
   <div className=''>
@@ -19,7 +23,8 @@ const Categories = async() => {
             {item.name}
             <Image src={item.image} width={100} height={100} alt="category"/>
             <FaEdit/>
-            <FaTrash/>
+            {item.id}
+            <FaTrash onClick={()=>handleDelete(item.id)}/>
     </div>
          })}
         </div>
