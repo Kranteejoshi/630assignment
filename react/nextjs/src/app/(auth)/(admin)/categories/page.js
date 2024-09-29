@@ -1,33 +1,15 @@
 'use client'
-import axios from "axios"
 import React from "react"
-import { FaEdit, FaTrash } from "react-icons/fa"
 import CategoryForm from "./CategoryForm"
-import { Image } from "@nextui-org/react"
+import CategoryList from "./CategoryList"
 
 
 
-const Categories = async() => {
-  const {data} = await axios.get('https://api.escuelajs.co/api/v1/categories')
-  const handleDelete =async(id)=> {
-   const {data}= await axios.delete('https://api.escuelajs.co/api/v1/categories/'+id)
-   console.log(data)
-  }
-  
+const Categories = () => {
   return (
   <div className=''>
     <CategoryForm/>
-    <div className="flex gap-4">
-    {data.map((item)=>{
-        return <div className="p-4 bg-pink-100 shadow-md text-2xl font-semibold font-mono justify-center content-center">
-            {item.name}
-            <Image src={item.image} width={100} height={100} alt="category"/>
-            <FaEdit/>
-            {item.id}
-            <FaTrash onClick={()=>handleDelete(item.id)}/>
-    </div>
-         })}
-        </div>
+    <CategoryList/>
     </div>
 )
 }
