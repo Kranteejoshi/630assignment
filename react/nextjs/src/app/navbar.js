@@ -1,4 +1,14 @@
+
+'use client'
 const NavBar = () =>{
-    return "I am navbar"
+    const handleClick = ()=>{
+        debugger;
+    }
+    return (
+        <div>
+            <button>Home</button>
+            <button onClick={handleClick}>Input</button>
+        </div>
+    )
 }
 export default NavBar

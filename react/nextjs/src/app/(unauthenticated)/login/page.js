@@ -1,10 +1,11 @@
 'use client'
-import React from 'react';
+import React, { useRef } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button, Card, CardBody, DatePicker, Image, Input } from '@nextui-org/react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -17,10 +18,14 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const inputRef = useRef(null)
+  const inputRef2 = useRef(null)
+
   //JS ko code haru eta lekhne
   const handleLogin = async(values)=> {
   const {data}=await axios.post('https://fakestoreapi.com/auth/login',values )
   }
+ 
   return(
   <div>
 
@@ -32,6 +37,7 @@ const Register = () => {
       }}
       validationSchema={SignupSchema}
       onSubmit={values => {
+        debugger;
        handleLogin(values)
       }}
     >
@@ -46,12 +52,12 @@ const Register = () => {
           alt="NextUI hero Image"
           src="logo.png"
         />
-          <Input name="username"    className={errors.username ? ' border border-red-600 rounded-md': null} onChange={handleChange} placeholder="Enter username"/>
+          <Input name="username" className={errors.username ? ' border border-red-600 rounded-md': null} onChange={handleChange} placeholder="Enter username"/>
           {errors.username && touched.username ? (
             <div className='text-red-900 text-sm'>{errors.username}</div>
           ) : null}
     
-          <Input name="password" type="password" onChange={handleChange}  placeholder='Enter Password'/>
+          <Input name="password" ref={inputRef2}  type="password" onChange={handleChange}  placeholder='Enter Password'/>
           {errors.password && touched.password ? <div>{errors.password}</div> : null}
           
           <Button className='bg-[#3C5C7D] text-white' type="submit">Register</Button>
@@ -61,7 +67,13 @@ const Register = () => {
         </Card>
         </div>
       )}
+
+  
     </Formik>
+    <div className='h-[100vh]'>
+      This is test.
+      </div> 
+      <input ref={inputRef}  placeholder='Hello'/>
   </div>
 )
 }

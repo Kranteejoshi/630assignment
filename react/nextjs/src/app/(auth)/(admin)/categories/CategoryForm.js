@@ -19,6 +19,8 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import {} from "@nextui-org/react";
 import Link from "next/link";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const FormSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,11 +29,12 @@ const FormSchema = Yup.object().shape({
     .required("Required"),
   image: Yup.string()
     .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    // .max(100, "Too Long!")
     .required("Required"),
 });
 
-const FormInput = () => (
+
+const FormInput = (props) => (
   <div>
     <Formik
       initialValues={{
@@ -40,8 +43,7 @@ const FormInput = () => (
       }}
       validationSchema={FormSchema}
       onSubmit={(values) => {
-        // same shape as initial values
-        console.log(values);
+        props.handleSubmit(values)
       }}
     >
       {({ errors, touched, handleChange }) => (
