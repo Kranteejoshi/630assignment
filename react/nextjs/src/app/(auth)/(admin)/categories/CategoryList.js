@@ -9,7 +9,7 @@ const CategoryList = (props) => {
     <div>
         <div className="flex gap-4">
     {props.categories.map((item)=>{
-        return <Card item={item} handleDelete={props.handleDelete}/>
+        return <Card item={item} handleDelete={props.handleDelete} handleSubmit={props.handleSubmit}/>
          })}
         </div>
 

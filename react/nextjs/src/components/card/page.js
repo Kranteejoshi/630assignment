@@ -2,6 +2,7 @@
 import React from "react";
 import { Image } from "@nextui-org/react";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import CategoryForm from "@/app/(auth)/(admin)/categories/CategoryForm";
 
 const Card = (props) => {
   return (
@@ -21,9 +22,9 @@ const Card = (props) => {
 
 
       </div>
-     
-      <FaEdit />
-      {props.item.id}
+      <CategoryForm type="Edit" item={props.item} handleSubmit={props.handleSubmit}/>
+      
+           {props.item.id}
       <FaTrash onClick={() => props.handleDelete(props.item)}/>
     </div>
   );

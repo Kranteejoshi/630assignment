@@ -36,23 +36,23 @@ const FormSchema = Yup.object().shape({
 
 const FormInput = (props) => (
   <div>
+
     <Formik
-      initialValues={{
-        name: "",
-        image: ""
-      }}
+      initialValues={props.item ? props.item : {name: '', image:''}}
+      enableReinitialize={true}
       validationSchema={FormSchema}
-      onSubmit={(values) => {
-        props.handleSubmit(values)
+      onSubmit={values => {
+        props.handleSubmit(values, props?.item?.id)
       }}
     >
-      {({ errors, touched, handleChange }) => (
+      {({ errors, touched, handleChange, values }) => (
         <div className="flex justify-center items-center">
           <Card className="flex p-4">
             <CardBody className="flex gap-2">
               <Form className="flex flex-col">
                 <Input
                   name="name"
+                  value={values.name}
                   className={
                     errors.name
                       ? " border border-red-600 rounded-md"
@@ -67,12 +67,14 @@ const FormInput = (props) => (
 
                 <Input
                   name="image"
+                  value={values.image}
                   onChange={handleChange}
                   placeholder="Enter Image"
                 />
                 {errors.image && touched.image ? (
                   <div>{errors.image}</div>
                 ) : null}
+            
                 
                 <Button className="bg-[#3C5C7D] text-white" type="submit">
                   Save
@@ -86,20 +88,20 @@ const FormInput = (props) => (
   </div>
 );
 
-export default function CategoryForm() {
+export default function CategoryForm(props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
-      <Button onPress={onOpen}>Add Category</Button>
+      <Button onPress={onOpen}>{props.type} Categories</Button>
       <Modal className="h-[50%]" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Modal Title
+              {props.type} Categories
               </ModalHeader>
               <ModalBody>
-               <FormInput/>
+               <FormInput item={props.item} handleSubmit={props.handleSubmit}/>
               </ModalBody>
             </>
           )}
