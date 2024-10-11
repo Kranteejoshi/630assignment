@@ -25,7 +25,7 @@ const Card = (props) => {
       <CategoryForm type="Edit" item={props.item} handleSubmit={props.handleSubmit}/>
       
            {props.item.id}
-      <FaTrash onClick={() => props.handleDelete(props.item)}/>
+      <FaTrash onClick={()=>props.handleDelete(props.item)}/>
     </div>
   );
 };

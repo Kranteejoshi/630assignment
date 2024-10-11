@@ -18,7 +18,7 @@ const Categories = () => {
   }
   
   const handleDelete =async(item)=> {
-      const {data}= await axios.delete(process.env.NEXT_PUBLIC_API_URL + '/categories' + item.id)
+      const {data}= await axios.delete(process.env.NEXT_PUBLIC_API_URL + '/categories/'+item.id)
       fetchData()
       if(data) toast.custom((t) =>(
           <CustomToast t={t} actionImage={item.image} actionTitle="Deleted Category Successfully!" actionName={item.name}/>
