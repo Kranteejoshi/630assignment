@@ -153,7 +153,7 @@ useEffect(()=>{
               </DropdownTrigger>
               <DropdownMenu>
                 <DropdownItem>View</DropdownItem>
-                <DropdownItem key="edit">Edit</DropdownItem>
+                <DropdownItem key="edit">Edith</DropdownItem>
                 <DropdownItem key="delete" onPress={()=>handleDelete(product)} >Delete</DropdownItem>
               </DropdownMenu>
             </Dropdown>
